@@ -111,20 +111,107 @@
 
 # ------------------
 # EXERCISE 7-6, now do it using an active variable:
-prompt = "Hello, to find out the price of a movie ticket, please enter your age"
-prompt += "\nPlease type 'quit' when you're done. "
+# prompt = "Hello, to find out the price of a movie ticket, please enter your age"
+# prompt += "\nPlease type 'quit' when you're done. "
 
-active = True
-while active:
-    age = input(prompt)
-    if age == 'quit':
-        active = False
-    else:
-        age = int(age)
+# active = True
+# while active:
+#     age = input(prompt)
+#     if age == 'quit':
+#         active = False
+#     else:
+#         age = int(age)
 
-        if age < 3:
-            print(f"\tYour ticket is free!")
-        elif age <= 12:
-            print(f"\tYour ticket is $10.")
-        else:
-            print(f"\tYour ticket is $15.")
+#         if age < 3:
+#             print(f"\tYour ticket is free!")
+#         elif age <= 12:
+#             print(f"\tYour ticket is $10.")
+#         else:
+#             print(f"\tYour ticket is $15.")
+
+
+# ---------------------
+# -- example in book of Moving items from one list to another using while loop
+# unconfirmed_users = ['alice', 'brian', 'candace']
+# confirmed_users = []
+
+# while unconfirmed_users:
+#     current_user = unconfirmed_users.pop()
+
+#     print(f"Verifying user: {current_user.title()}")
+#     confirmed_users.append(current_user)
+
+#     print("\nThe following users have been confirmed:")
+#     for confirmed_user in confirmed_users:
+#         print(confirmed_user.title())
+
+
+# --------------------
+# EXERCISE 7-8:
+# make a list of sandwich orders, and an empty finished sandwiches list and move sandwiches from the orders list into the finished list when they're done being made and print list of finished sandwiches:
+
+# sandwich_orders = ['blt', 'tuna', 'turkey club', 'meatball sub']
+# finished_sandwiches = []
+
+# while sandwich_orders:
+#     current_order = sandwich_orders.pop()
+#     print(f"\nYour {current_order} sandwich is being made.")
+
+#     finished_sandwiches.append(current_order)
+
+#     print("\nThe following sandwiche(s) are ready:")
+#     for sandwich in finished_sandwiches:
+#         print(f"{sandwich.title()}")
+
+
+# -------------------
+# EXERCISE 7-9:
+# Using same lists as above, list one sandwich type 3 times and then say you're out of that type of sandwich and remove it from the list usinga while loop. Then run rest of program and ensure tuna was removed:
+
+# sandwich_orders = ['blt', 'tuna', 'turkey club',
+#                    'tuna', 'meatball sub', 'tuna']
+# finished_sandwiches = []
+
+# print("We apologize, but we are currently all out of tuna for the day.")
+# while 'tuna' in sandwich_orders:
+#     sandwich_orders.remove('tuna')
+
+
+# while sandwich_orders:
+#     current_order = sandwich_orders.pop()
+#     print(f"\nYour {current_order} sandwich is being made.")
+
+#     finished_sandwiches.append(current_order)
+
+#     print("\nThe following sandwiche(s) are ready:")
+#     for sandwich in finished_sandwiches:
+#         print(f"{sandwich.title()}")
+
+
+# --------------------
+# EXERCISE 7-10:
+# Make a poll that asks users about their dream vacation and then print results of the poll -- use a while loop and store the information collected in a dictionary:
+
+poll_responses = {}
+
+polling_active = True
+
+while polling_active:
+    # prompt for user's name and their response:
+    name = input("\nWhat is your name? ")
+    response = input(
+        "If you could visit any one place in the world, where would you go? ")
+
+    # Store the responses in the dictionary
+    poll_responses[name] = response
+
+    # ask if others are going to take the poll, if not, then stop loop
+    question = input(
+        "Would you like to let another person respond to the poll? (yes or no): ")
+    if question == "no":
+        polling_active = False
+
+# when polling is completed, print results
+print(f"\n--- Poll Results ---")
+for name, response in poll_responses.items():
+    print(f"{name.title()} would like to visit {response.title()}")
